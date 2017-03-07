@@ -1,0 +1,14 @@
+{
+  "name": "weblas",
+  "homepage": "https://github.com/waylonflinn/weblas",
+  "version": "0.9.0",
+  "_release": "0.9.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.9.0",
+    "commit": "e4dde9f2368290daa87afa254d83ab01095f7515"
+  },
+  "_source": "https://github.com/waylonflinn/weblas.git",
+  "_target": "0.9.0",
+  "_originalSource": "weblas"
+}

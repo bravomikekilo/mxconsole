@@ -1,0 +1,251 @@
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::io::BufferedInputStream *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::io::BufferedInputStream *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+.swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+..Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+...swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+..swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+.swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+E.Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+.swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+.swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+.Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+FEswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+Eswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+swig/python detected a memory leak of type 'tensorflow::io::BufferedInputStream *', no destructor found.
+EEswig/python detected a memory leak of type 'tensorflow::WritableFile *', no destructor found.
+======================================================================
+ERROR: testAppend (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 72, in testAppend
+    f.write("begin\n")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testAtomicWriteStringToFile (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 52, in testAtomicWriteStringToFile
+    file_io.atomic_write_string_to_file(file_path, "testing")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 365, in atomic_write_string_to_file
+    write_string_to_file(temp_pathname, contents)
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 262, in write_string_to_file
+    f.write(file_content)
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testCopy (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 152, in testCopy
+    self.assertEqual("testing", f.read())
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 118, in read
+    length = self.size() - self.tell()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 150, in tell
+    return self._read_buf.Tell()
+AttributeError: 'SwigPyObject' object has no attribute 'Tell'
+
+======================================================================
+ERROR: testCopyOverwrite (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 162, in testCopyOverwrite
+    self.assertEqual("testing", file_io.FileIO(file_path, mode="r").read())
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 118, in read
+    length = self.size() - self.tell()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 150, in tell
+    return self._read_buf.Tell()
+AttributeError: 'SwigPyObject' object has no attribute 'Tell'
+
+======================================================================
+ERROR: testEof (__main__.FileIoTest)
+Test that reading past EOF does not raise an exception.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 421, in testEof
+    f.flush()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 181, in flush
+    ret_status = self._writable_file.Flush()
+AttributeError: 'SwigPyObject' object has no attribute 'Flush'
+
+======================================================================
+ERROR: testMultipleFiles (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 86, in testMultipleFiles
+    f.flush()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 181, in flush
+    ret_status = self._writable_file.Flush()
+AttributeError: 'SwigPyObject' object has no attribute 'Flush'
+
+======================================================================
+ERROR: testMultipleWrites (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 94, in testMultipleWrites
+    f.write("line2")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testRead (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 346, in testRead
+    f.write("testing1\ntesting2\ntesting3\n\ntesting5")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testReadBinaryMode (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 59, in testReadBinaryMode
+    file_io.write_string_to_file(file_path, "testing")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 262, in write_string_to_file
+    f.write(file_content)
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testReadLine (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 334, in testReadLine
+    f.write("testing1\ntesting2\ntesting3\n\ntesting5")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testReadingIterator (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 399, in testReadingIterator
+    f.write("".join(data))
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testReadlines (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 410, in testReadlines
+    f.flush()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 181, in flush
+    ret_status = self._writable_file.Flush()
+AttributeError: 'SwigPyObject' object has no attribute 'Flush'
+
+======================================================================
+ERROR: testSeek (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 374, in testSeek
+    f.write("testing1\ntesting2\ntesting3\n\ntesting5")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testTell (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 356, in testTell
+    f.write("testing1\ntesting2\ntesting3\n\ntesting5")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+ERROR: testWriteBinaryMode (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 67, in testWriteBinaryMode
+    self.assertEqual("testing", f.read())
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 118, in read
+    length = self.size() - self.tell()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 150, in tell
+    return self._read_buf.Tell()
+AttributeError: 'SwigPyObject' object has no attribute 'Tell'
+
+======================================================================
+ERROR: testWriteToString (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 45, in testWriteToString
+    file_io.write_string_to_file(file_path, "testing")
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 262, in write_string_to_file
+    f.write(file_content)
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 158, in __exit__
+    self.close()
+  File "/home/baomingkun/Res/mxconsole/lib/io/file_io.py", line 189, in close
+    ret_status = self._writable_file.Close()
+AttributeError: 'SwigPyObject' object has no attribute 'Close'
+
+======================================================================
+FAIL: testStat (__main__.FileIoTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "mxconsole/lib/io/file_io_test.py", line 326, in testStat
+    self.assertEqual(7, file_statistics.length)
+AssertionError: 7 != 0
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.045s
+
+FAILED (failures=1, errors=16)
+

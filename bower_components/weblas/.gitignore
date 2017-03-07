@@ -1,0 +1,10 @@
+node_modules
+
+__pycache__
+*.pyc
+
+test/data/*/00*
+
+/test.js
+/benchmark.js
+/dist/weblas.zip
