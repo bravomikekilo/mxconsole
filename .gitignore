@@ -2,6 +2,7 @@ node_modules/*
 typings/*
 build/*
 dist/tf-tensorboard-demo.html
+.idea/*
 
 # Since bower components are stored in the same directory as
 # tensorboard components, we ignore everything under components
