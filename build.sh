@@ -7,5 +7,6 @@ cp tensorflow_fs/bazel-bin/tensorflow/python/pywrap_tensorflow_fs.py \
    tensorflow_fs/bazel-bin/tensorflow/python/_pywrap_tensorflow_fs.so \
    lib/native/
 sudo npm install
+typings install
 gulp compile
 bower install
