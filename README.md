@@ -7,6 +7,10 @@ MXConsole use extracted TensorFlow's filesystem and record_reader and record_wri
  meanwhile, without TensorFlow's Tensor and ops. Platform relavant summary related code is needed . 
  Such as **dmlc/tensorboard**. MXConsole now can only present logs by now.
 
+## Build tools
+1. node.js
+2. bazel
+
 ## Installation
 1. clone this repo `git clone https://github.com/bravomikekilo/mxconsole`
 2. cd mxconsole/tensorflow_fs
