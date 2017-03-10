@@ -126,7 +126,13 @@ load("@local_config_sycl//sycl:build_defs.bzl", "if_sycl")
 # Note that some protos are in neither additional_core_proto_srcs nor this
 # filegroup; e.g.  ones with individual proto_library targets.
 CORE_PROTO_SRCS = [
+    "framework/resource_handle.proto",
+    "framework/summary.proto",
+    "framework/tensor.proto",
+    "framework/tensor_shape.proto",
+    "framework/types.proto",
     "lib/core/error_codes.proto",
+    "util/event.proto",
 ]
 
 # Protos which are not needed on mobile builds, but should be included in
@@ -235,6 +241,7 @@ cc_library(
         "platform/thread_annotations.h",
         "platform/types.h",
         "platform/windows/cpu_info.h",
+        "util/events_writer.h",
     ],
     visibility = ["//visibility:public"],
     deps = [
@@ -308,6 +315,8 @@ cc_library(
                 "lib/**/*.cc",
                 "platform/*.h",
                 "platform/*.cc",
+                "util/*.h",
+                "util/*.cc",
             ],
             exclude = [
                 "**/*test*",
@@ -331,6 +340,8 @@ cc_library(
                 "platform/*.cc",
                 "platform/profile_utils/**/*.h",
                 "platform/profile_utils/**/*.cc",
+                "util/*.h",
+                "util/*.cc",
             ],
             exclude = [
                 "**/*test*",

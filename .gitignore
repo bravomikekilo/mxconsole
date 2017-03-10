@@ -3,6 +3,9 @@ typings/*
 build/*
 dist/tf-tensorboard-demo.html
 .idea/*
+bower_components/*
+*.pyc
+__pycache__
 
 # Since bower components are stored in the same directory as
 # tensorboard components, we ignore everything under components
