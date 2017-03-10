@@ -9,7 +9,8 @@ Now we only provide api that generate summary from `numpy.ndarray`. part of thes
 
 ## Build tools
 1. bazel
-1. optional: node.js (for frontend build)
+2. node.js and bower(actually we only need bower to do bower install, so just `npm install -g bower` should be fine`)
+3. optional: gulp and other node.js module(for frontend build only)
 
 ## Installation
 - normal installation
