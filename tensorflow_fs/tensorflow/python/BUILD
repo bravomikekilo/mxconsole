@@ -135,6 +135,7 @@ tf_py_wrap_cc(
         "lib/io/py_record_reader.i",
         "lib/io/py_record_writer.i",
         "lib/core/strings.i",
+        "events_writer.i",
         "platform/base.i",
     ],
     deps = [
