@@ -4,7 +4,7 @@ import logging
 import os
 import numpy as np
 from mxconsole.summary import summary
-from mxconsole.summary.writer.writer import FileWriter
+from mxconsole.summary import FileWriter
 
 def fit(args, network, data_loader, batch_end_callback=None):
     # kvstore

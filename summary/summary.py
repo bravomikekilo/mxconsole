@@ -37,7 +37,7 @@ import re as _re
 import bisect as _bisect
 import numpy as _np
 from PIL import Image as _Image
-from IO import StringIO as _StringIO
+from io import StringIO as _StringIO
 from six.moves import xrange
 
 from google.protobuf import json_format as _json_format
@@ -48,6 +48,7 @@ from mxconsole.protobuf.summary_pb2 import SummaryDescription
 from mxconsole.protobuf.event_pb2 import Event
 from mxconsole.protobuf.event_pb2 import SessionLog
 from mxconsole.protobuf.event_pb2 import TaggedRunMetadata
+from mxconsole.protobuf.summary_pb2 import HistogramProto
 # pylint: enable=unused-import
 
 #from mxconsole.platform import dtypes as _dtypes
@@ -246,8 +247,8 @@ def get_summary_description(node_def):
 
 
 _allowed_symbols = [
-    'Summary', 'SummaryDescription', 'Event', 
-    'TaggedRunMetadata', 'SessionLog', 'xrange',
+    'Summary', 'SummaryDescription', 'Event', 'FileWriter'
+    'TaggedRunMetadata', 'SessionLog', 'xrange', 'HistogramProto',
 ]
 
 remove_undocumented(__name__, _allowed_symbols)

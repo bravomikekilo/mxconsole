@@ -22,8 +22,8 @@ import time
 
 from mxconsole.protobuf import summary_pb2
 from mxconsole.protobuf import event_pb2
-from mxconsole.python.platform import ops
-from mxconsole.python.platform import tf_logging as logging
+from mxconsole.platform import ops
+from mxconsole.platform import tf_logging as logging
 from mxconsole.summary.writer.event_file_writer import EventFileWriter
 
 
@@ -67,18 +67,7 @@ class SummaryToEventTransformer(object):
     self.event_writer = event_writer
     # For storing used tags for session.run() outputs.
     self._session_run_tags = {}
-    if graph is not None or graph_def is not None:
-      # Calling it with both graph and graph_def for backward compatibility.
-      self.add_graph(graph=graph, graph_def=graph_def)
-      # Also export the meta_graph_def in this case.
-      # graph may itself be a graph_def due to positional arguments
-      maybe_graph_as_def = (
-          graph.as_graph_def(add_shapes=True) if isinstance(graph, ops.Graph)
-          else graph)
-      self.add_meta_graph(
-          meta_graph.create_meta_graph_def(
-              graph_def=graph_def or maybe_graph_as_def))
-
+    
   def add_summary(self, summary, global_step=None):
     """Adds a `Summary` protocol buffer to the event file.
 
@@ -117,6 +106,12 @@ class SummaryToEventTransformer(object):
     """
     event = event_pb2.Event(session_log=session_log)
     self._add_event(event, global_step)
+
+  def _add_event(self, event, step):
+    event.wall_time = time.time()
+    if step is not None:
+      event.step = int(step)
+    self.event_writer.add_event(event)
 
 class FileWriter(SummaryToEventTransformer):
   """Writes `Summary` protocol buffers to event files.
