@@ -25,7 +25,7 @@ import os
 import uuid
 
 from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
-from mxconsole.platform import errors
+from mxconsole.framework import errors
 from mxconsole.util import compat
 
 

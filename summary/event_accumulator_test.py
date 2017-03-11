@@ -22,10 +22,10 @@ import os
 import numpy as np
 from six.moves import xrange  # pylint: disable=redefined-builtin
 
-from _mxconsole.protobuf import graph_pb2
-from _mxconsole.protobuf import summary_pb2
-from _mxconsole.protobuf import config_pb2
-from _mxconsole.protobuf import event_pb2
+from mxconsole.protobuf import graph_pb2
+from mxconsole.protobuf import summary_pb2
+from mxconsole.protobuf import config_pb2
+from mxconsole.protobuf import event_pb2
 from tensorflow.python.framework import constant_op
 from tensorflow.python.framework import dtypes
 from tensorflow.python.framework import ops

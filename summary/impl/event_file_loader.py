@@ -20,10 +20,10 @@ from __future__ import print_function
 
 from mxconsole.protobuf import event_pb2
 from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
-from mxconsole.platform import errors
-from mxconsole.platform import app
-from mxconsole.platform import resource_loader
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import errors
+from mxconsole.framework import app
+from mxconsole.framework import resource_loader
+from mxconsole.framework import tf_logging as logging
 from mxconsole.util import compat
 
 

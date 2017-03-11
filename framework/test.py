@@ -33,7 +33,7 @@ from __future__ import print_function
 
 
 import unittest
-from mxconsole.platform import googletest as _googletest
+from mxconsole.framework import googletest as _googletest
 from mxconsole.util.all_util import remove_undocumented
 
 import sys

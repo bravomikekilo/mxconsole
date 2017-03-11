@@ -29,7 +29,7 @@ from __future__ import print_function
 
 # go/tf-wildcard-import
 # pylint: disable=wildcard-import
-from .tf_record import *
+from mxconsole.lib.io.tf_record import *
 # pylint: enable=wildcard-import
 from mxconsole.util.all_util import remove_undocumented
 

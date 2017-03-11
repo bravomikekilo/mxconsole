@@ -29,8 +29,8 @@ import tempfile
 from unittest import *
 # pylint: enable=wildcard-import
 
-from mxconsole.platform import app
-from mxconsole.platform import benchmark  # pylint: disable=unused-import
+from mxconsole.framework import app
+from mxconsole.framework import benchmark  # pylint: disable=unused-import
 
 Benchmark = benchmark.TensorFlowBenchmark  # pylint: disable=invalid-name
 

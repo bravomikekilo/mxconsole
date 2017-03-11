@@ -37,7 +37,7 @@ import re as _re
 import bisect as _bisect
 import numpy as _np
 from PIL import Image as _Image
-from IO import StringIO as _StringIO
+from io import StringIO as _StringIO
 from six.moves import xrange
 
 from google.protobuf import json_format as _json_format
@@ -183,7 +183,7 @@ def _make_image(tensor, height, width, channel):
                          width=width,
                          colorspace=channel,
                          encoded_image_string=image_string)
-                         
+
 def image(tag, tensor):
     """Outputs a `Summary` protocol buffer with images.
     The summary has up to `max_images` summary values containing images. The

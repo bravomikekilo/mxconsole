@@ -21,9 +21,9 @@ from __future__ import print_function
 import collections
 import json
 
-from tensorflow.python.platform import test
-from tensorflow.python.summary import event_accumulator
-from tensorflow.tensorboard.plugins.debugger import plugin as debugger_plugin
+from mxconsole.platform import test
+from mxconsole.summary import event_accumulator
+from mxconsole.plugins.debugger import plugin as debugger_plugin
 
 
 class FakeRequest(object):

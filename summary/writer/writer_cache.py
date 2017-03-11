@@ -20,7 +20,7 @@ from __future__ import print_function
 
 import threading
 
-from mxconsole.platform import ops
+from mxconsole.framework import ops
 from mxconsole.summary.writer.writer import FileWriter
 
 

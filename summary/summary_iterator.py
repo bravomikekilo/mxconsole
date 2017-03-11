@@ -28,10 +28,10 @@ import six
 from mxconsole.protobuf import graph_pb2
 from mxconsole.protobuf import summary_pb2
 from mxconsole.protobuf import event_pb2
-from mxconsole.platform import ops
+from mxconsole.framework import ops
 from mxconsole.lib.io import tf_record
-from mxconsole.platform import gfile
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import gfile
+from mxconsole.framework import tf_logging as logging
 from mxconsole.util import compat
 
 

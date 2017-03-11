@@ -31,8 +31,8 @@ from mxconsole.util import compat
 # pylint: disable=g-import-not-at-top
 _FAST_TENSOR_UTIL_AVAILABLE = False
 
-from mxconsole.platform import dtypes
-from mxconsole.platform import ops
+from mxconsole.framework import dtypes
+from mxconsole.framework import ops
 # pylint: enable=g-import-not-at-top
 
 

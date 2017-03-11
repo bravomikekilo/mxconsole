@@ -29,7 +29,7 @@ from mxconsole.protobuf import meta_graph_pb2
 from mxconsole.protobuf.config_pb2 import RunMetadata
 from mxconsole.protobuf.event_pb2 import SessionLog
 from mxconsole.util import tensor_util
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import tf_logging as logging
 from mxconsole.summary import summary
 from mxconsole.summary.impl import directory_watcher
 from mxconsole.summary.impl import event_file_loader

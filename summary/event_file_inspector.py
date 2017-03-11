@@ -117,9 +117,9 @@ import itertools
 import os
 
 from mxconsole.protobuf.event_pb2 import SessionLog
-from mxconsole.platform import app
-from mxconsole.platform import flags
-from mxconsole.platform import gfile
+from mxconsole.framework import app
+from mxconsole.framework import flags
+from mxconsole.framework import gfile
 from mxconsole.summary import event_accumulator
 from mxconsole.summary import event_multiplexer
 from mxconsole.summary.impl import event_file_loader

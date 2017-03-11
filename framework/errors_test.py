@@ -21,9 +21,9 @@ from __future__ import print_function
 import warnings
 
 from mxconsole.protobuf import error_codes_pb2
-from mxconsole.platform import errors
-from mxconsole.platform import errors_impl
-from mxconsole.platform import test
+from mxconsole.framework import errors
+from mxconsole.framework import errors_impl
+from mxconsole.framework import test
 
 
 class ErrorsTest(test.TestCase):

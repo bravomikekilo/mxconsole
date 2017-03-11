@@ -22,11 +22,11 @@ from __future__ import print_function
 import os
 import shutil
 
-from tensorflow.python.framework import test_util
-from tensorflow.python.platform import gfile
-from tensorflow.python.platform import googletest
-from tensorflow.python.summary.impl import directory_watcher
-from tensorflow.python.summary.impl import io_wrapper
+from mxconsole.framework import test_util
+from mxconsole.platform import gfile
+from mxconsole.platform import googletest
+from mxconsole.summary.impl import directory_watcher
+from mxconsole.summary.impl import io_wrapper
 
 
 class _ByteLoader(object):

@@ -25,10 +25,10 @@ import os
 import socket
 from werkzeug import serving
 
-from mxconsole.platform import app
-from mxconsole.platform import flags
-from mxconsole.platform import resource_loader
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import app
+from mxconsole.framework import flags
+from mxconsole.framework import resource_loader
+from mxconsole.framework import tf_logging as logging
 from mxconsole.summary import event_file_inspector as efi
 from mxconsole.summary import event_multiplexer
 from mxconsole.backend import application

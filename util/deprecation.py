@@ -23,7 +23,7 @@ import functools
 import inspect
 import re
 
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import tf_logging as logging
 from mxconsole.util import decorator_utils
 
 

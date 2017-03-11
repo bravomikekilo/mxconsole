@@ -35,13 +35,13 @@ from mxconsole.protobuf import node_def_pb2
 from mxconsole.protobuf import tensor_shape_pb2
 from mxconsole.protobuf import types_pb2
 from mxconsole.protobuf import versions_pb2
-from mxconsole.platform import device as pydev
-from mxconsole.platform import dtypes
-from mxconsole.platform import op_def_registry
-from mxconsole.platform import registry
+from mxconsole.framework import device as pydev
+from mxconsole.framework import dtypes
+from mxconsole.framework import op_def_registry
+from mxconsole.framework import registry
 from mxconsole.util import tensor_shape
-from mxconsole.platform import versions # TODO: fix the versions compat problem, avoid import tensorflow
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import versions # TODO: fix the versions compat problem, avoid import tensorflow
+from mxconsole.framework import tf_logging as logging
 from mxconsole.util import compat
 from mxconsole.util import decorator_utils
 

@@ -25,7 +25,7 @@ from __future__ import print_function
 
 import traceback
 
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import tf_logging as logging
 from mxconsole.util import compat
 
 

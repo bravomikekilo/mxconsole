@@ -37,8 +37,8 @@ from six.moves import xrange  # pylint: disable=redefined-builtin
 from six.moves.urllib import parse as urlparse
 from werkzeug import wrappers
 
-from mxconsole.platform import resource_loader
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import resource_loader
+from mxconsole.framework import tf_logging as logging
 from mxconsole.summary import event_accumulator
 from mxconsole.backend import process_graph
 from mxconsole.lib.python import http_util

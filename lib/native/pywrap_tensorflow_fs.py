@@ -150,6 +150,44 @@ def PyRecordWriter_New(filename, compression_type_string, out_status):
     return _pywrap_tensorflow_fs.PyRecordWriter_New(filename, compression_type_string, out_status)
 PyRecordWriter_New = _pywrap_tensorflow_fs.PyRecordWriter_New
 
+class EventsWriter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, EventsWriter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, EventsWriter, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, file_prefix):
+        this = _pywrap_tensorflow_fs.new_EventsWriter(file_prefix)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _pywrap_tensorflow_fs.delete_EventsWriter
+    __del__ = lambda self: None
+
+    def FileName(self):
+        return _pywrap_tensorflow_fs.EventsWriter_FileName(self)
+
+    def _WriteSerializedEvent(self, event_str):
+        return _pywrap_tensorflow_fs.EventsWriter__WriteSerializedEvent(self, event_str)
+
+    def Flush(self):
+        return _pywrap_tensorflow_fs.EventsWriter_Flush(self)
+
+    def Close(self):
+        return _pywrap_tensorflow_fs.EventsWriter_Close(self)
+
+    def WriteEvent(self, event):
+      from mxconsole.protobuf.event_pb2 import Event
+      if not isinstance(event, Event):
+        raise TypeError("Expected an mxconsole.protobuf.event_pb2.Event proto, "
+                        " but got %s" % type(event))
+      return self._WriteSerializedEvent(event.SerializeToString())
+
+EventsWriter_swigregister = _pywrap_tensorflow_fs.EventsWriter_swigregister
+EventsWriter_swigregister(EventsWriter)
+
 
 def TF_NewStatus():
     return _pywrap_tensorflow_fs.TF_NewStatus()

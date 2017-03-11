@@ -20,7 +20,7 @@ from __future__ import division
 from __future__ import print_function
 
 from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
-from mxconsole.platform import errors
+from mxconsole.framework import errors
 from mxconsole.util import compat
 
 

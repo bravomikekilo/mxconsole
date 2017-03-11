@@ -20,8 +20,8 @@ from __future__ import print_function
 
 import sys
 
-from mxconsole.platform import app
-from mxconsole.platform import flags
+from mxconsole.framework import app
+from mxconsole.framework import flags
 
 FLAGS = flags.FLAGS
 flags.DEFINE_boolean('myflag', False, '')

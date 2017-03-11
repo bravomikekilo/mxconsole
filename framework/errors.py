@@ -23,7 +23,7 @@ from . import errors_impl as _impl
 # pylint: enable=unused-import
 # go/tf-wildcard-import
 # pylint: disable=wildcard-import
-from mxconsole.platform.errors_impl import *
+from mxconsole.framework.errors_impl import *
 # pylint: enable=wildcard-import
 from mxconsole.util.all_util import remove_undocumented
 

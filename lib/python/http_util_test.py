@@ -25,7 +25,7 @@ import gzip
 import six
 from werkzeug import test as wtest
 from werkzeug import wrappers
-from mxconsole.platform import test
+from mxconsole.framework import test
 from mxconsole.lib.python import http_util
 
 

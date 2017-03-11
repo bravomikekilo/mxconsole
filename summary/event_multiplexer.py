@@ -23,8 +23,8 @@ import threading
 
 import six
 
-from mxconsole.platform import gfile
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import gfile
+from mxconsole.framework import tf_logging as logging
 from mxconsole.summary import event_accumulator
 from mxconsole.summary.impl import directory_watcher
 from mxconsole.summary.impl import io_wrapper

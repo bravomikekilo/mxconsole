@@ -20,7 +20,7 @@ from __future__ import print_function
 
 import sys as _sys
 
-from mxconsole.platform import flags
+from mxconsole.framework import flags
 from mxconsole.util.all_util import remove_undocumented
 
 

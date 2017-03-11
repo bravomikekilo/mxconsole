@@ -26,7 +26,7 @@ from tensorflow.python.framework import constant_op
 from tensorflow.python.ops import array_ops
 from tensorflow.python.ops import math_ops
 from tensorflow.python.platform import test
-from _mxconsole.util import nest
+from mxconsole.util import nest
 
 
 class NestTest(test.TestCase):

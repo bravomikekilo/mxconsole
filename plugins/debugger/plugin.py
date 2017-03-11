@@ -23,7 +23,7 @@ import json
 
 from werkzeug import wrappers
 
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import tf_logging as logging
 from mxconsole.lib.python import http_util
 from mxconsole.plugins import base_plugin
 

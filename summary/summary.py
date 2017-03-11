@@ -52,13 +52,13 @@ from mxconsole.protobuf.summary_pb2 import HistogramProto
 # pylint: enable=unused-import
 
 #from mxconsole.platform import dtypes as _dtypes
-from mxconsole.platform import ops as _ops
+from mxconsole.framework import ops as _ops
 #from tensorflow.python.ops import gen_logging_ops as _gen_logging_ops
 # exports tensor_summary
 # pylint: disable=unused-import
 #from tensorflow.python.ops.summary_ops import tensor_summary
 # pylint: enable=unused-import
-from mxconsole.platform import tf_logging as _logging
+from mxconsole.framework import tf_logging as _logging
 # exports FileWriter, FileWriterCache
 # pylint: disable=unused-import
 from mxconsole.summary.writer.writer import FileWriter

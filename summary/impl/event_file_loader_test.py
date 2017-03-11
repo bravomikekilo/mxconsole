@@ -22,8 +22,8 @@ from __future__ import print_function
 import os
 import tempfile
 
-from _mxconsole.platform import test
-from _mxconsole.platform import googletest
+from _mxconsole.framework import test
+from _mxconsole.framework import googletest
 from _mxconsole.summary.impl import event_file_loader
 
 

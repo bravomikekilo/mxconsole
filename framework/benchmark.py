@@ -30,9 +30,9 @@ import six
 from mxconsole.protobuf import config_pb2
 from mxconsole.protobuf import test_log_pb2
 from mxconsole.util import timeline
-from mxconsole.platform import app
-from mxconsole.platform import gfile
-from mxconsole.platform import tf_logging as logging
+from mxconsole.framework import app
+from mxconsole.framework import gfile
+from mxconsole.framework import tf_logging as logging
 
 # When a subclass of the Benchmark class is created, it is added to
 # the registry automatically

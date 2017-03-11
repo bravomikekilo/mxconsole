@@ -20,9 +20,9 @@ from __future__ import print_function
 
 import os.path
 
-from mxconsole.platform import errors
+from mxconsole.framework import errors
 from mxconsole.lib.io import file_io
-from mxconsole.platform import test
+from mxconsole.framework import test
 
 
 class FileIoTest(test.TensorFlowTestCase):
