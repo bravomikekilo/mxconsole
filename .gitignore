@@ -5,7 +5,7 @@ mxconsole/dist/tf-tensorboard-demo.html
 build
 build/*
 dist/*
-MXconsole.egg-info/*
+MXConsole.egg-info/*
 .idea/*
 mxconsole/bower_components/*
 *.pyc
