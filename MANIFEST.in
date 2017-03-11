@@ -1,0 +1,3 @@
+include mxconsole/lib/native/_pywrap_tensorflow_fs.so
+include mxconsole/TAG
+recursive-include mxconsole/bower_components *

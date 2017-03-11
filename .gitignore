@@ -2,6 +2,10 @@ mxconsole/node_modules/*
 mxconsole/typings/*
 mxconsole/build/*
 mxconsole/dist/tf-tensorboard-demo.html
+build
+build/*
+dist/*
+MXconsole.egg-info/*
 .idea/*
 mxconsole/bower_components/*
 *.pyc

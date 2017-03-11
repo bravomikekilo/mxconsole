@@ -1,5 +1,6 @@
 import os
 from setuptools import setup, find_packages
+
 LONG_DESCRIPTION = """
 """
 setup(
@@ -20,9 +21,5 @@ setup(
     keywords='mxnet visualzation tensorboard standalone',
     packages=find_packages(exclude=['mxconsole.scripts']),
     install_requires=['pillow', 'numpy'],
-    package_data={
-    	'lib.native': ['_pywrap_tensorflow_fs.so'],
-    	'mxconsole': ['bower_components/*'],
-    	'mxconsole': ['dist/*'],
-    }
+    include_package_data=True,
 )
