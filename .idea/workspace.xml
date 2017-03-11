@@ -1,97 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0d0f2b-9dad-4d88-b473-46eb26469ff5" name="Default" comment="change  mxconsole.platform to mxconsole.framework">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/app.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/app_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/base.i" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/benchmark.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/control_imports.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/device.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/dtypes.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/errors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/errors_impl.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/errors_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/flags.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/flags_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/gfile.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/googletest.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/logging_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/op_def_registry.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/ops.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/parameterized.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/registry.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/resource_loader.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/resource_loader_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/status_bar.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/sysconfig.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/tf_logging.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/framework/versions.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/app.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/app_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/base.i" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/benchmark.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/control_imports.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/device.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/dtypes.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/errors.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/errors_impl.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/errors_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/flags.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/flags_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/gfile.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/googletest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/logging_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/op_def_registry.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/ops.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/parameterized.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/registry.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/resource_loader.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/resource_loader_test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/status_bar.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/sysconfig.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/test.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/tf_logging.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/platform/versions.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/native/_pywrap_tensorflow_fs.so" afterPath="$PROJECT_DIR$/lib/native/_pywrap_tensorflow_fs.so" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_mxconsole.py" afterPath="$PROJECT_DIR$/_mxconsole.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/application.py" afterPath="$PROJECT_DIR$/backend/application.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/understanding-vanish-gradient.ipynb" afterPath="$PROJECT_DIR$/demo/understanding-vanish-gradient.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/file_io.py" afterPath="$PROJECT_DIR$/lib/io/file_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/file_io_test.py" afterPath="$PROJECT_DIR$/lib/io/file_io_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/python_io.py" afterPath="$PROJECT_DIR$/lib/io/python_io.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/io/tf_record.py" afterPath="$PROJECT_DIR$/lib/io/tf_record.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/native/pywrap_tensorflow_fs.py" afterPath="$PROJECT_DIR$/lib/native/pywrap_tensorflow_fs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python/http_util_test.py" afterPath="$PROJECT_DIR$/lib/python/http_util_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/python/json_util_test.py" afterPath="$PROJECT_DIR$/lib/python/json_util_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/debugger/plugin.py" afterPath="$PROJECT_DIR$/plugins/debugger/plugin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugins/debugger/plugin_test.py" afterPath="$PROJECT_DIR$/plugins/debugger/plugin_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/event_accumulator.py" afterPath="$PROJECT_DIR$/summary/event_accumulator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/event_accumulator_test.py" afterPath="$PROJECT_DIR$/summary/event_accumulator_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/event_file_inspector.py" afterPath="$PROJECT_DIR$/summary/event_file_inspector.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/event_multiplexer.py" afterPath="$PROJECT_DIR$/summary/event_multiplexer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/impl/directory_watcher.py" afterPath="$PROJECT_DIR$/summary/impl/directory_watcher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/impl/directory_watcher_test.py" afterPath="$PROJECT_DIR$/summary/impl/directory_watcher_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/impl/event_file_loader.py" afterPath="$PROJECT_DIR$/summary/impl/event_file_loader.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/impl/event_file_loader_test.py" afterPath="$PROJECT_DIR$/summary/impl/event_file_loader_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/impl/io_wrapper.py" afterPath="$PROJECT_DIR$/summary/impl/io_wrapper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/impl/reservoir_test.py" afterPath="$PROJECT_DIR$/summary/impl/reservoir_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/summary.py" afterPath="$PROJECT_DIR$/summary/summary.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/summary_iterator.py" afterPath="$PROJECT_DIR$/summary/summary_iterator.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/writer/event_file_writer.py" afterPath="$PROJECT_DIR$/summary/writer/event_file_writer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/writer/writer.py" afterPath="$PROJECT_DIR$/summary/writer/writer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/summary/writer/writer_cache.py" afterPath="$PROJECT_DIR$/summary/writer/writer_cache.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tensorflow_fs/tensorflow/python/summary/summary.py" afterPath="$PROJECT_DIR$/tensorflow_fs/tensorflow/python/summary/summary.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/deprecation.py" afterPath="$PROJECT_DIR$/util/deprecation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/keyword_args_test.py" afterPath="$PROJECT_DIR$/util/keyword_args_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/nest_test.py" afterPath="$PROJECT_DIR$/util/nest_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/tensor_util.py" afterPath="$PROJECT_DIR$/util/tensor_util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/util/timeline.py" afterPath="$PROJECT_DIR$/util/timeline.py" />
-    </list>
+    <list default="true" id="7d0d0f2b-9dad-4d88-b473-46eb26469ff5" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +50,7 @@
           <file leaf-file-name="tensor_util.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/util/tensor_util.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1419">
+                <state relative-caret-position="-17193">
                   <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
                   <folding>
                     <element signature="e#730#768#0" expanded="true" />
@@ -753,7 +663,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488900508632</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="change  mxconsole.platform to mxconsole.framework">
+      <created>1489202568540</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1489202568540</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -796,7 +713,8 @@
     <MESSAGE value="add the lib.file_io and lib.io src required by gfile&#10;" />
     <MESSAGE value="first success run snapshot" />
     <MESSAGE value="fix little dependency problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix little dependency problem" />
+    <MESSAGE value="change  mxconsole.platform to mxconsole.framework" />
+    <option name="LAST_COMMIT_MESSAGE" value="change  mxconsole.platform to mxconsole.framework" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1207,7 +1125,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/util/tensor_util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1419">
+        <state relative-caret-position="-17193">
           <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
           <folding>
             <element signature="e#730#768#0" expanded="true" />

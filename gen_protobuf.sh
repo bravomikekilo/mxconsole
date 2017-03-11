@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-cd ..
+# a develop tool to generate protobuf python lib for mxconsole 
 filenames=(`ls mxconsole/protobuf | grep ".*\.proto"`)
 
 for file in ${filenames[@]}; do

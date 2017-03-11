@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: MXConsole
+Version: 0.0.1a1
+Summary: A standalone tensorboard port for mxnet and other framework
+Home-page: https://github.com/bravomikekilo/mxconsole
+Author: google bravomikekilo
+Author-email: bravomikekilo@buaa.edu.cn
+License: Apache-2.0
+Description: 
+        
+Keywords: mxnet visualzation tensorboard standalone
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
