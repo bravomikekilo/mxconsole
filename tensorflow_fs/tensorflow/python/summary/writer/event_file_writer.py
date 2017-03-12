@@ -24,9 +24,9 @@ import time
 
 import six
 
-from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
-from mxconsole.platform import gfile
-from mxconsole.util import compat
+from tensorflow.python import pywrap_tensorflow
+from tensorflow.python.platform import gfile
+from tensorflow.python.util import compat
 
 
 class EventFileWriter(object):

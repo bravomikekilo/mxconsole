@@ -20,8 +20,8 @@ from __future__ import print_function
 
 import threading
 
-from mxconsole.platform import ops
-from mxconsole.summary.writer.writer import FileWriter
+from tensorflow.python.framework import ops
+from tensorflow.python.summary.writer.writer import FileWriter
 
 
 class FileWriterCache(object):
