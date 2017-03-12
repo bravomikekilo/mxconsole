@@ -11,3 +11,5 @@ typings install
 gulp compile
 bower install
 echo "finish"
+cd ..
+sudo python setup.py install

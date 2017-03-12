@@ -5,4 +5,7 @@ echo "finish update the native library"
 echo "update the frontend components"
 cd mxconsole
 bower install
-echo "finished"
+echo "update finished"
+echo "packaging and installing"
+cd ..
+sudo python setup.py install
