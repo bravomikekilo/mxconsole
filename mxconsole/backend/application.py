@@ -39,7 +39,7 @@ from werkzeug import wrappers
 
 from mxconsole.framework import resource_loader
 from mxconsole.framework import tf_logging as logging
-from mxconsole.summary import event_accumulator
+from mxconsole.backend.event_processing import event_accumulator
 from mxconsole.backend import process_graph
 from mxconsole.lib.python import http_util
 
@@ -529,7 +529,7 @@ class TensorBoardWSGIApp(object):
             #path = ('/').join(components)
             # Bazel keeps all the external dependencies in //WORKSPACE/external.
             # and resource loader wants a path relative to //WORKSPACE/tensorflow/.
-            path = os.path.join('bower_components', path)
+            path = os.path.join('components', path)
             try:
                 contents = resource_loader.load_resource(path)
             except IOError:

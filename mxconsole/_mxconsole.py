@@ -29,8 +29,8 @@ from mxconsole.framework import app
 from mxconsole.framework import flags
 from mxconsole.framework import resource_loader
 from mxconsole.framework import tf_logging as logging
-from mxconsole.summary import event_file_inspector as efi
-from mxconsole.summary import event_multiplexer
+from mxconsole.backend.event_processing import event_file_inspector as efi
+from mxconsole.backend.event_processing import event_multiplexer
 from mxconsole.backend import application
 from mxconsole.plugins.debugger import plugin as debugger_plugin
 #from mxconsole.plugins.projector import plugin as projector_plugin
@@ -95,7 +95,7 @@ class Server(object):
   def get_tag(self):
     """Read the TensorBoard TAG number, and return it or an empty string."""
     try:
-      tag = resource_loader.load_resource('tensorboard/TAG').strip()
+      tag = resource_loader.load_resource('TAG').strip()
       logging.info('TensorBoard is tag: %s', tag)
       return tag
     except IOError:
@@ -175,6 +175,7 @@ class Server(object):
 
 
 def main(unused_argv=None):
+
   if FLAGS.inspect:
     logging.info('Not bringing up TensorBoard, but inspecting event files.')
     event_file = os.path.expanduser(FLAGS.event_file)

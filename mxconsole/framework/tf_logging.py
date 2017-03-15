@@ -35,7 +35,7 @@ import six
 
 from mxconsole.util.all_util import remove_undocumented
 
-
+_interactive = False
 # Determine whether we are in an interactive environment
 try:
   # This is only defined in interactive shells
