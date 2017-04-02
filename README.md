@@ -13,7 +13,7 @@ Now we only provide api that generate summary from `numpy.ndarray`. part of thes
 
 ## Installation
 - normal installation
-  1. clone this repo `git clone https://github.com/bravomikekilo/mxconsole`
+  1. clone this repo `git clone https://github.com/bravomikekilo/mxconsole --recursive`
   2. `cd mxconsole/tensorflow_fs`
   3. `./configure` to configure tensorflow_fs build, choose your python binary and default libs
   and choose only the jemalloc support.
