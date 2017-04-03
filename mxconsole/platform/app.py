@@ -20,8 +20,12 @@ from __future__ import print_function
 
 import sys as _sys
 
-from mxconsole.framework import flags
+from mxconsole.platform import flags
 from mxconsole.util.all_util import remove_undocumented
+
+
+def _benchmark_tests_can_log_memory():
+  return True
 
 
 def run(main=None, argv=None):

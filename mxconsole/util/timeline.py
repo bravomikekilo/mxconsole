@@ -26,7 +26,7 @@ import re
 # The timeline target is usually imported as part of BUILD target
 # "platform_test", which includes also includes the "platform"
 # dependency.  This is why the logging import here is okay.
-from mxconsole.framework import tf_logging as logging
+from mxconsole.platform import tf_logging as logging
 
 
 class AllocationMaximum(collections.namedtuple(

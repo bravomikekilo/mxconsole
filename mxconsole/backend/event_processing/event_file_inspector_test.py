@@ -20,12 +20,12 @@ from __future__ import print_function
 import os
 import shutil
 
+from mxconsole.backend.event_processing import event_file_inspector as efi
+from mxconsole.framework import test_util
+from mxconsole.platform import googletest
+from mxconsole.protobuf.event_pb2 import SessionLog
 from mxconsole.protobuf.summary_pb2 import HistogramProto
 from mxconsole.protobuf.summary_pb2 import Summary
-from mxconsole.protobuf.event_pb2 import SessionLog
-from mxconsole.framework import test_util
-from mxconsole.framework import googletest
-from mxconsole.backend.event_processing import event_file_inspector as efi
 from mxconsole.summary import SummaryWriter
 
 

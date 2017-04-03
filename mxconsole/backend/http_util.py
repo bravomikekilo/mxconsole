@@ -26,12 +26,10 @@ import time
 import wsgiref.handlers
 
 import six
-
 from werkzeug import wrappers
 
+from mxconsole.backend import json_util
 from mxconsole.util import compat
-from mxconsole.lib.python import json_util
-
 
 _EXTRACT_MIMETYPE_PATTERN = re.compile(r'^[^;\s]*')
 _EXTRACT_CHARSET_PATTERN = re.compile(r'charset=([-_0-9A-Za-z]+)')

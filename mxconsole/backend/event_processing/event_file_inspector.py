@@ -116,13 +116,11 @@ import collections
 import itertools
 import os
 
-from mxconsole.protobuf.event_pb2 import SessionLog
-from mxconsole.framework import app
-from mxconsole.framework import flags
-from mxconsole.framework import gfile
 from mxconsole.backend.event_processing import event_accumulator
-from mxconsole.backend.event_processing import event_multiplexer
 from mxconsole.backend.event_processing import event_file_loader
+from mxconsole.backend.event_processing import event_multiplexer
+from mxconsole.platform import app, flags, gfile
+from mxconsole.protobuf.event_pb2 import SessionLog
 
 FLAGS = flags.FLAGS
 

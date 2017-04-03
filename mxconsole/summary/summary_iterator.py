@@ -19,20 +19,12 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import os.path
 import threading
 import time
 
-import six
-
-from mxconsole.protobuf import graph_pb2
-from mxconsole.protobuf import summary_pb2
-from mxconsole.protobuf import event_pb2
 from mxconsole.framework import ops
 from mxconsole.lib.io import tf_record
-from mxconsole.framework import gfile
-from mxconsole.framework import tf_logging as logging
-from mxconsole.util import compat
+from mxconsole.protobuf import event_pb2
 
 
 # class SummaryWriter(object):

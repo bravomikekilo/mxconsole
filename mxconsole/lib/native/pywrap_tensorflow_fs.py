@@ -189,6 +189,24 @@ EventsWriter_swigregister = _pywrap_tensorflow_fs.EventsWriter_swigregister
 EventsWriter_swigregister(EventsWriter)
 
 
+_pywrap_tensorflow_fs.__version___swigconstant(_pywrap_tensorflow_fs)
+__version__ = _pywrap_tensorflow_fs.__version__
+
+_pywrap_tensorflow_fs.GRAPH_DEF_VERSION_swigconstant(_pywrap_tensorflow_fs)
+GRAPH_DEF_VERSION = _pywrap_tensorflow_fs.GRAPH_DEF_VERSION
+
+_pywrap_tensorflow_fs.GRAPH_DEF_VERSION_MIN_CONSUMER_swigconstant(_pywrap_tensorflow_fs)
+GRAPH_DEF_VERSION_MIN_CONSUMER = _pywrap_tensorflow_fs.GRAPH_DEF_VERSION_MIN_CONSUMER
+
+_pywrap_tensorflow_fs.GRAPH_DEF_VERSION_MIN_PRODUCER_swigconstant(_pywrap_tensorflow_fs)
+GRAPH_DEF_VERSION_MIN_PRODUCER = _pywrap_tensorflow_fs.GRAPH_DEF_VERSION_MIN_PRODUCER
+
+_pywrap_tensorflow_fs.__git_version___swigconstant(_pywrap_tensorflow_fs)
+__git_version__ = _pywrap_tensorflow_fs.__git_version__
+
+_pywrap_tensorflow_fs.__compiler_version___swigconstant(_pywrap_tensorflow_fs)
+__compiler_version__ = _pywrap_tensorflow_fs.__compiler_version__
+
 def TF_NewStatus():
     return _pywrap_tensorflow_fs.TF_NewStatus()
 TF_NewStatus = _pywrap_tensorflow_fs.TF_NewStatus
@@ -325,6 +343,14 @@ Status_OK = _pywrap_tensorflow_fs.Status_OK
 def __lshift__(os, x):
     return _pywrap_tensorflow_fs.__lshift__(os, x)
 __lshift__ = _pywrap_tensorflow_fs.__lshift__
+
+def TfCheckOpHelperOutOfLine(v, msg):
+    return _pywrap_tensorflow_fs.TfCheckOpHelperOutOfLine(v, msg)
+TfCheckOpHelperOutOfLine = _pywrap_tensorflow_fs.TfCheckOpHelperOutOfLine
+
+def TfCheckOpHelper(v, msg):
+    return _pywrap_tensorflow_fs.TfCheckOpHelper(v, msg)
+TfCheckOpHelper = _pywrap_tensorflow_fs.TfCheckOpHelper
 class WritableFile(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, WritableFile, name, value)

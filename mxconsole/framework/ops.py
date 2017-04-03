@@ -28,6 +28,12 @@ import sys
 import threading
 
 import six
+from mxconsole.framework import device as pydev
+from mxconsole.framework import dtypes
+from mxconsole.framework import op_def_registry
+from mxconsole.framework import registry
+from mxconsole.framework import versions
+from mxconsole.platform import tf_logging as logging
 from mxconsole.protobuf import attr_value_pb2
 from mxconsole.protobuf import function_pb2
 from mxconsole.protobuf import graph_pb2
@@ -35,15 +41,9 @@ from mxconsole.protobuf import node_def_pb2
 from mxconsole.protobuf import tensor_shape_pb2
 from mxconsole.protobuf import types_pb2
 from mxconsole.protobuf import versions_pb2
-from mxconsole.framework import device as pydev
-from mxconsole.framework import dtypes
-from mxconsole.framework import op_def_registry
-from mxconsole.framework import registry
-from mxconsole.util import tensor_shape
-from mxconsole.framework import versions # TODO: fix the versions compat problem, avoid import tensorflow
-from mxconsole.framework import tf_logging as logging
 from mxconsole.util import compat
 from mxconsole.util import decorator_utils
+from mxconsole.util import tensor_shape
 
 
 def _override_helper(clazz_object, operator, func):
@@ -265,7 +265,9 @@ class Tensor(_TensorLike):
       # Unary.
       "__invert__",
       "__neg__",
-      "__abs__"
+      "__abs__",
+      "__matmul__",
+      "__rmatmul__"
   }
 
   def __init__(self, op, value_index, dtype):
@@ -4028,6 +4030,10 @@ class GraphKeys(object):
   # Key for control flow context.
   COND_CONTEXT = "cond_context"
   WHILE_CONTEXT = "while_context"
+
+  # Key for streaming model ports.
+  # NOTE(yuanbyu): internal and experimental.
+  _STREAMING_MODEL_PORTS = "streaming_model_ports"
 
   @decorator_utils.classproperty
   def VARIABLES(cls):  # pylint: disable=no-self-argument

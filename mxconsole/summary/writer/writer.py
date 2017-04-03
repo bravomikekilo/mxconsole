@@ -20,10 +20,8 @@ from __future__ import print_function
 
 import time
 
-from mxconsole.protobuf import summary_pb2
 from mxconsole.protobuf import event_pb2
-from mxconsole.framework import ops
-from mxconsole.framework import tf_logging as logging
+from mxconsole.protobuf import summary_pb2
 from mxconsole.summary.writer.event_file_writer import EventFileWriter
 
 

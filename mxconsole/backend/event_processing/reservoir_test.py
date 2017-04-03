@@ -19,8 +19,8 @@ from __future__ import print_function
 
 from six.moves import xrange  # pylint: disable=redefined-builtin
 
-from mxconsole.framework import test
 from mxconsole.backend.event_processing import reservoir
+from mxconsole.platform import test
 
 
 class ReservoirTest(test.TestCase):

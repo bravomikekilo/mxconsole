@@ -25,9 +25,8 @@ from __future__ import print_function
 
 import traceback
 
-from mxconsole.framework import tf_logging as logging
+from mxconsole.platform import tf_logging as logging
 from mxconsole.util import compat
-
 
 # Registry mechanism below is based on mapreduce.python.mrpython.Register.
 _LOCATION_TAG = "location"

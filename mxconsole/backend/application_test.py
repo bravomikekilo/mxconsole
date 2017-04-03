@@ -27,6 +27,7 @@ import json
 import numbers
 import os
 import shutil
+import socket
 import tempfile
 import threading
 
@@ -41,12 +42,12 @@ from mxconsole.protobuf import graph_pb2
 from mxconsole.protobuf import summary_pb2
 from mxconsole.protobuf import config_pb2
 from mxconsole.protobuf import meta_graph_pb2
-from mxconsole.util import event_pb2
-from mxconsole.platform import resource_loader
+from mxconsole.protobuf import event_pb2
 from mxconsole.platform import test
-from mxconsole.summary import event_multiplexer
 from mxconsole.summary.writer import writer as writer_lib
+from tensorflow.tensorboard import tensorboard
 from mxconsole.backend import application
+from mxconsole.backend.event_processing import event_multiplexer
 
 
 class TensorboardServerTest(test.TestCase):
@@ -63,8 +64,13 @@ class TensorboardServerTest(test.TestCase):
     plugins = {}
     app = application.TensorBoardWSGIApp(
         self.temp_dir, plugins, multiplexer, reload_interval=0)
-    self._server = serving.BaseWSGIServer('localhost', 0, app)
-    # 0 to pick an unused port.
+    try:
+      self._server = serving.BaseWSGIServer('localhost', 0, app)
+      # 0 to pick an unused port.
+    except IOError:
+      # BaseWSGIServer has a preference for IPv4. If that didn't work, try again
+      # with an explicit IPv6 address.
+      self._server = serving.BaseWSGIServer('::1', 0, app)
     self._server_thread = threading.Thread(target=self._server.serve_forever)
     self._server_thread.daemon = True
     self._server_thread.start()
@@ -137,7 +143,8 @@ class TensorboardServerTest(test.TestCase):
                 # if only_use_meta_graph, the graph is from the metagraph
                 'graph': True,
                 'meta_graph': self._only_use_meta_graph,
-                'run_metadata': ['test run']
+                'run_metadata': ['test run'],
+                'tensors': [],
             }
         })
 
@@ -423,8 +430,54 @@ class ParseEventFilesSpecTest(test.TestCase):
 class TensorBoardAssetsTest(test.TestCase):
 
   def testTagFound(self):
-    tag = resource_loader.load_resource('tensorboard/TAG')
+    tag = application.get_tensorboard_tag()
     self.assertTrue(tag)
+    app = application.standard_tensorboard_wsgi('', True, 60)
+    self.assertEqual(app.tag, tag)
+
+
+class TensorboardSimpleServerConstructionTest(test.TestCase):
+  """Tests that the default HTTP server is constructed without error.
+
+  Mostly useful for IPv4/IPv6 testing. This test should run with only IPv4, only
+  IPv6, and both IPv4 and IPv6 enabled.
+  """
+
+  class _StubApplication(object):
+    tag = ''
+
+  def testMakeServerBlankHost(self):
+    # Test that we can bind to all interfaces without throwing an error
+    server, url = tensorboard.make_simple_server(
+        self._StubApplication(),
+        host='',
+        port=0)  # Grab any available port
+    self.assertTrue(server)
+    self.assertTrue(url)
+
+  def testSpecifiedHost(self):
+    one_passed = False
+    try:
+      _, url = tensorboard.make_simple_server(
+          self._StubApplication(),
+          host='127.0.0.1',
+          port=0)
+      self.assertStartsWith(actual=url, expected_start='http://127.0.0.1:')
+      one_passed = True
+    except socket.error:
+      # IPv4 is not supported
+      pass
+    try:
+      _, url = tensorboard.make_simple_server(
+          self._StubApplication(),
+          host='::1',
+          port=0)
+      self.assertStartsWith(actual=url, expected_start='http://[::1]:')
+      one_passed = True
+    except socket.error:
+      # IPv6 is not supported
+      pass
+    self.assertTrue(one_passed)  # We expect either IPv4 or IPv6 to be supported
 
 
 if __name__ == '__main__':

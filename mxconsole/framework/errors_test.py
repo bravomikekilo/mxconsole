@@ -20,10 +20,10 @@ from __future__ import print_function
 
 import warnings
 
-from mxconsole.protobuf import error_codes_pb2
 from mxconsole.framework import errors
 from mxconsole.framework import errors_impl
-from mxconsole.framework import test
+from mxconsole.platform import test
+from mxconsole.protobuf import error_codes_pb2
 
 
 class ErrorsTest(test.TestCase):

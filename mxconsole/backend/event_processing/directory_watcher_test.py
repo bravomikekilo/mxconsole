@@ -22,11 +22,10 @@ from __future__ import print_function
 import os
 import shutil
 
-from mxconsole.framework import test_util
-from mxconsole.framework import gfile
-from mxconsole.framework import googletest
 from mxconsole.backend.event_processing import directory_watcher
 from mxconsole.backend.event_processing import io_wrapper
+from mxconsole.framework import test_util
+from mxconsole.platform import gfile, googletest
 
 
 class _ByteLoader(object):

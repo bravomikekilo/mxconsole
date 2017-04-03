@@ -20,8 +20,7 @@ from __future__ import print_function
 import sys
 import unittest
 
-from mxconsole.framework import flags
-from mxconsole.platform import app
+from mxconsole.platform import app, flags
 
 flags.DEFINE_string("string_foo", "default_val", "HelpString")
 flags.DEFINE_integer("int_foo", 42, "HelpString")

@@ -18,12 +18,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from mxconsole.protobuf import event_pb2
-from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
 from mxconsole.framework import errors
-from mxconsole.framework import app
-from mxconsole.framework import resource_loader
-from mxconsole.framework import tf_logging as logging
+from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
+from mxconsole.platform import app, tf_logging as logging, resource_loader
+from mxconsole.protobuf import event_pb2
 from mxconsole.util import compat
 
 

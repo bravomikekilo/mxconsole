@@ -25,7 +25,7 @@ import time
 import six
 
 from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
-from mxconsole.framework import gfile
+from mxconsole.platform import gfile
 from mxconsole.util import compat
 
 

@@ -18,7 +18,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from mxconsole.framework import test
+from mxconsole.platform import test
 from mxconsole.util import keyword_args
 
 

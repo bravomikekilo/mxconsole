@@ -19,21 +19,21 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+from mxconsole.lib.native import pywrap_tensorflow_fs as pywrap_tensorflow
 
-# very dirty resolution, should be changed
-# these values are extracted from a living tensorflow instance
-__version__ = '1.0.0'
-__git_version__ = 'v1.0.0-rc2-15-g47bba63-dirty'
-__compiler_version__ = '4.8.4'
+__version__ = pywrap_tensorflow.__version__
+__git_version__ = pywrap_tensorflow.__git_version__
+__compiler_version__ = pywrap_tensorflow.__compiler_version__
 
 VERSION = __version__
 GIT_VERSION = __git_version__
 COMPILER_VERSION = __compiler_version__
 
-GRAPH_DEF_VERSION = 21
-GRAPH_DEF_VERSION_MIN_CONSUMER = 0
-
-GRAPH_DEF_VERSION_MIN_PRODUCER = 0
+GRAPH_DEF_VERSION = pywrap_tensorflow.GRAPH_DEF_VERSION
+GRAPH_DEF_VERSION_MIN_CONSUMER = (
+    pywrap_tensorflow.GRAPH_DEF_VERSION_MIN_CONSUMER)
+GRAPH_DEF_VERSION_MIN_PRODUCER = (
+    pywrap_tensorflow.GRAPH_DEF_VERSION_MIN_PRODUCER)
 
 __all__ = [
     "__version__",

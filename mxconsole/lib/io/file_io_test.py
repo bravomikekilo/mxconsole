@@ -22,7 +22,7 @@ import os.path
 
 from mxconsole.framework import errors
 from mxconsole.lib.io import file_io
-from mxconsole.framework import test
+from mxconsole.platform import test
 
 
 class FileIoTest(test.TensorFlowTestCase):

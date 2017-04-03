@@ -27,9 +27,7 @@ import time
 
 import six
 
-from mxconsole.framework import gfile
-from mxconsole.framework import tf_logging as logging
-from mxconsole.platform import app
+from mxconsole.platform import app, gfile, tf_logging as logging
 from mxconsole.protobuf import config_pb2
 from mxconsole.protobuf import test_log_pb2
 from mxconsole.util import timeline
@@ -41,6 +39,8 @@ GLOBAL_BENCHMARK_REGISTRY = set()
 # Environment variable that determines whether benchmarks are written.
 # See also tensorflow/core/util/reporter.h TestReporter::kTestReporterEnv.
 TEST_REPORTER_TEST_ENV = "TEST_REPORT_FILE_PREFIX"
+
+_benchmark_tests_can_log_memory = app._benchmark_tests_can_log_memory  # pylint: disable=protected-access
 
 
 def _global_report_benchmark(

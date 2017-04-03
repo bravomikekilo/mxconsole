@@ -20,10 +20,9 @@ from __future__ import print_function
 
 import bisect
 
-from mxconsole.framework import errors
-from mxconsole.framework import gfile
-from mxconsole.framework import tf_logging as logging
 from mxconsole.backend.event_processing import io_wrapper
+from mxconsole.framework import errors
+from mxconsole.platform import gfile, tf_logging as logging
 
 
 class DirectoryWatcher(object):

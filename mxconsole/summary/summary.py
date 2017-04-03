@@ -33,36 +33,31 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import re as _re
 import bisect as _bisect
+import re as _re
+from io import StringIO as _StringIO
+
 import numpy as _np
 from PIL import Image as _Image
-from io import StringIO as _StringIO
+from google.protobuf import json_format as _json_format
 from six.moves import xrange
 
-from google.protobuf import json_format as _json_format
+# pylint: enable=unused-import
+# from mxconsole.platform import dtypes as _dtypes
+from mxconsole.framework import ops as _ops
+# from tensorflow.python.ops import gen_logging_ops as _gen_logging_ops
+# exports tensor_summary
+# pylint: disable=unused-import
+# from tensorflow.python.ops.summary_ops import tensor_summary
+# pylint: enable=unused-import
+from mxconsole.platform import tf_logging as _logging
+from mxconsole.protobuf.summary_pb2 import HistogramProto
 # exports Summary, SummaryDescription, Event, TaggedRunMetadata, SessionLog
 # pylint: disable=unused-import
 from mxconsole.protobuf.summary_pb2 import Summary
 from mxconsole.protobuf.summary_pb2 import SummaryDescription
-from mxconsole.protobuf.event_pb2 import Event
-from mxconsole.protobuf.event_pb2 import SessionLog
-from mxconsole.protobuf.event_pb2 import TaggedRunMetadata
-from mxconsole.protobuf.summary_pb2 import HistogramProto
-# pylint: enable=unused-import
-
-#from mxconsole.platform import dtypes as _dtypes
-from mxconsole.framework import ops as _ops
-#from tensorflow.python.ops import gen_logging_ops as _gen_logging_ops
-# exports tensor_summary
-# pylint: disable=unused-import
-#from tensorflow.python.ops.summary_ops import tensor_summary
-# pylint: enable=unused-import
-from mxconsole.framework import tf_logging as _logging
 # exports FileWriter, FileWriterCache
 # pylint: disable=unused-import
-from mxconsole.summary.writer.writer import FileWriter
-from mxconsole.summary.writer.writer_cache import FileWriterCache
 # pylint: enable=unused-import
 from mxconsole.util import compat as _compat
 from mxconsole.util.all_util import remove_undocumented

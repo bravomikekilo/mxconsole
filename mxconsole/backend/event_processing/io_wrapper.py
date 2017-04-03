@@ -19,7 +19,7 @@ from __future__ import print_function
 
 import os
 
-from mxconsole.framework import gfile
+from mxconsole.platform import gfile
 
 
 def IsGCSPath(path):

@@ -24,16 +24,16 @@ import threading
 
 import numpy as np
 
+from mxconsole.backend.event_processing import directory_watcher
+from mxconsole.backend.event_processing import event_file_loader
+from mxconsole.backend.event_processing import reservoir
+from mxconsole.framework import tensor_util
+from mxconsole.platform import tf_logging as logging
 from mxconsole.protobuf import graph_pb2
 from mxconsole.protobuf import meta_graph_pb2
 from mxconsole.protobuf.config_pb2 import RunMetadata
 from mxconsole.protobuf.event_pb2 import SessionLog
-from mxconsole.util import tensor_util
-from mxconsole.framework import tf_logging as logging
 from mxconsole.summary import summary
-from mxconsole.backend.event_processing import directory_watcher
-from mxconsole.backend.event_processing import event_file_loader
-from mxconsole.backend.event_processing import reservoir
 from mxconsole.util import compat
 
 namedtuple = collections.namedtuple
@@ -65,11 +65,16 @@ AudioEvent = namedtuple('AudioEvent', ['wall_time', 'step',
                                        'encoded_audio_string', 'content_type',
                                        'sample_rate', 'length_frames'])
 
+TensorEvent = namedtuple('TensorEvent', ['wall_time', 'step', 'tensor_proto'])
+
 ## Different types of summary events handled by the event_accumulator
-SUMMARY_TYPES = {'simple_value': '_ProcessScalar',
-                 'histo': '_ProcessHistogram',
-                 'image': '_ProcessImage',
-                 'audio': '_ProcessAudio'}
+SUMMARY_TYPES = {
+    'simple_value': '_ProcessScalar',
+    'histo': '_ProcessHistogram',
+    'image': '_ProcessImage',
+    'audio': '_ProcessAudio',
+    'tensor': '_ProcessTensor',
+}
 
 ## The tagTypes below are just arbitrary strings chosen to pass the type
 ## information of the tag from the backend to the frontend
@@ -78,6 +83,7 @@ HISTOGRAMS = 'histograms'
 IMAGES = 'images'
 AUDIO = 'audio'
 SCALARS = 'scalars'
+TENSORS = 'tensors'
 HEALTH_PILLS = 'health_pills'
 GRAPH = 'graph'
 META_GRAPH = 'meta_graph'
@@ -96,6 +102,7 @@ DEFAULT_SIZE_GUIDANCE = {
     # We store this many health pills per op.
     HEALTH_PILLS: 100,
     HISTOGRAMS: 1,
+    TENSORS: 10,
 }
 
 STORE_EVERYTHING_SIZE_GUIDANCE = {
@@ -105,12 +112,13 @@ STORE_EVERYTHING_SIZE_GUIDANCE = {
     SCALARS: 0,
     HEALTH_PILLS: 0,
     HISTOGRAMS: 0,
+    TENSORS: 0,
 }
 
 # The tag that values containing health pills have. Health pill data is stored
 # in tensors. In order to distinguish health pill values from scalar values, we
 # rely on how health pill values have this special tag value.
-_HEALTH_PILL_EVENT_TAG = '__health_pill__'
+HEALTH_PILL_EVENT_TAG = '__health_pill__'
 
 
 def IsTensorFlowEventsFile(path):
@@ -151,6 +159,7 @@ class EventAccumulator(object):
 
   Histograms, audio, and images are very large, so storing all of them is not
   recommended.
+  @@Tensors
   """
 
   def __init__(self,
@@ -199,8 +208,10 @@ class EventAccumulator(object):
         size=sizes[COMPRESSED_HISTOGRAMS], always_keep_last=False)
     self._images = reservoir.Reservoir(size=sizes[IMAGES])
     self._audio = reservoir.Reservoir(size=sizes[AUDIO])
+    self._tensors = reservoir.Reservoir(size=sizes[TENSORS])
 
     self._generator_mutex = threading.Lock()
+    self.path = path
     self._generator = _GeneratorFromPath(path)
 
     self._compression_bps = compression_bps
@@ -227,6 +238,33 @@ class EventAccumulator(object):
       for event in self._generator.Load():
         self._ProcessEvent(event)
     return self
+
+  def PluginAssets(self, plugin_name):
+    """Return a list of all plugin assets for the given plugin.
+
+    Args:
+      plugin_name: The string name of a plugin to retrieve assets for.
+
+    Returns:
+      A list of string plugin asset names, or empty list if none are available.
+      If the plugin was not registered, an empty list is returned.
+    """
+    return plugin_asset_util.ListAssets(self.path, plugin_name)
+
+  def RetrievePluginAsset(self, plugin_name, asset_name):
+    """Return the contents of a given plugin asset.
+
+    Args:
+      plugin_name: The string name of a plugin.
+      asset_name: The string name of an asset.
+
+    Returns:
+      The string contents of the plugin asset.
+
+    Raises:
+      KeyError: If the asset is not available.
+    """
+    return plugin_asset_util.RetrieveAsset(self.path, plugin_name, asset_name)
 
   def FirstEventTimestamp(self):
     """Returns the timestamp in seconds of the first event.
@@ -285,7 +323,6 @@ class EventAccumulator(object):
                       'newest event.'))
       self._graph = event.graph_def
       self._graph_from_metagraph = False
-      self._UpdateTensorSummaries()
     elif event.HasField('meta_graph_def'):
       if self._meta_graph is not None:
         logging.warn(('Found more than one metagraph event per run. '
@@ -303,7 +340,6 @@ class EventAccumulator(object):
                           'graph with the newest metagraph version.'))
           self._graph_from_metagraph = True
           self._graph = meta_graph.graph_def.SerializeToString()
-          self._UpdateTensorSummaries()
     elif event.HasField('tagged_run_metadata'):
       tag = event.tagged_run_metadata.tag
       if tag in self._tagged_metadata:
@@ -312,66 +348,15 @@ class EventAccumulator(object):
       self._tagged_metadata[tag] = event.tagged_run_metadata.run_metadata
     elif event.HasField('summary'):
       for value in event.summary.value:
-        if value.HasField('tensor'):
-          if value.tag == _HEALTH_PILL_EVENT_TAG:
-            self._ProcessHealthPillSummary(value, event)
-          else:
-            self._ProcessTensorSummary(value, event)
+        if value.HasField('tensor') and value.tag == HEALTH_PILL_EVENT_TAG:
+          self._ProcessHealthPillSummary(value, event)
         else:
           for summary_type, summary_func in SUMMARY_TYPES.items():
             if value.HasField(summary_type):
               datum = getattr(value, summary_type)
-              getattr(self, summary_func)(value.tag, event.wall_time,
-                                          event.step, datum)
-
-  def _ProcessTensorSummary(self, value, event):
-    """Process summaries generated by the TensorSummary op.
-
-    These summaries are distinguished by the fact that they have a Tensor field,
-    rather than one of the old idiosyncratic per-summary data fields.
-
-    Processing Tensor summaries is complicated by the fact that Tensor summaries
-    are not self-descriptive; you need to read the NodeDef of the corresponding
-    TensorSummary op to know the summary_type, the tag, etc.
-
-    This method emits ERROR-level messages to the logs if it encounters Tensor
-    summaries that it cannot process.
-
-    Args:
-      value: A summary_pb2.Summary.Value with a Tensor field.
-      event: The event_pb2.Event containing that value.
-    """
-
-    def LogErrorOnce(msg):
-      logging.log_first_n(logging.ERROR, msg, 1)
-
-    name = value.node_name
-    if self._graph is None:
-      LogErrorOnce('Attempting to process TensorSummary output, but '
-                   'no graph is present, so processing is impossible. '
-                   'All TensorSummary output will be ignored.')
-      return
-
-    if name not in self._tensor_summaries:
-      LogErrorOnce('No node_def for TensorSummary {}; skipping this sequence.'.
-                   format(name))
-      return
-
-    summary_description = self._tensor_summaries[name]
-    type_hint = summary_description.type_hint
-
-    if not type_hint:
-      LogErrorOnce('No type_hint for TensorSummary {}; skipping this sequence.'.
-                   format(name))
-      return
-
-    if type_hint == 'scalar':
-      scalar = float(tensor_util.MakeNdarray(value.tensor))
-      self._ProcessScalar(name, event.wall_time, event.step, scalar)
-    else:
-      LogErrorOnce(
-          'Unsupported type {} for TensorSummary {}; skipping this sequence.'.
-          format(type_hint, name))
+              tag = value.node_name if summary_type == 'tensor' else value.tag
+              getattr(self, summary_func)(tag, event.wall_time, event.step,
+                                          datum)
 
   def _ProcessHealthPillSummary(self, value, event):
     """Process summaries containing health pills.
@@ -386,7 +371,7 @@ class EventAccumulator(object):
       value: A summary_pb2.Summary.Value with a Tensor field.
       event: The event_pb2.Event containing that value.
     """
-    elements = np.fromstring(value.tensor.tensor_content, dtype=np.float64)
+    elements = tensor_util.MakeNdarray(value.tensor)
 
     # The node_name property of the value object is actually a watch key: a
     # combination of node name, output slot, and a suffix. We capture the
@@ -405,30 +390,25 @@ class EventAccumulator(object):
     self._ProcessHealthPill(
         event.wall_time, event.step, node_name, output_slot, elements)
 
-  def _UpdateTensorSummaries(self):
-    g = self.Graph()
-    for node in g.node:
-      if node.op == 'TensorSummary':
-        d = summary.get_summary_description(node)
-
-        self._tensor_summaries[node.name] = d
-
   def Tags(self):
     """Return all tags found in the value stream.
 
     Returns:
       A `{tagType: ['list', 'of', 'tags']}` dictionary.
     """
-    return {IMAGES: self._images.Keys(),
-            AUDIO: self._audio.Keys(),
-            HISTOGRAMS: self._histograms.Keys(),
-            SCALARS: self._scalars.Keys(),
-            COMPRESSED_HISTOGRAMS: self._compressed_histograms.Keys(),
-            # Use a heuristic: if the metagraph is available, but
-            # graph is not, then we assume the metagraph contains the graph.
-            GRAPH: self._graph is not None,
-            META_GRAPH: self._meta_graph is not None,
-            RUN_METADATA: list(self._tagged_metadata.keys())}
+    return {
+        IMAGES: self._images.Keys(),
+        AUDIO: self._audio.Keys(),
+        HISTOGRAMS: self._histograms.Keys(),
+        SCALARS: self._scalars.Keys(),
+        COMPRESSED_HISTOGRAMS: self._compressed_histograms.Keys(),
+        TENSORS: self._tensors.Keys(),
+        # Use a heuristic: if the metagraph is available, but
+        # graph is not, then we assume the metagraph contains the graph.
+        GRAPH: self._graph is not None,
+        META_GRAPH: self._meta_graph is not None,
+        RUN_METADATA: list(self._tagged_metadata.keys())
+    }
 
   def Scalars(self, tag):
     """Given a summary tag, return all associated `ScalarEvent`s.
@@ -566,6 +546,20 @@ class EventAccumulator(object):
     """
     return self._audio.Items(tag)
 
+  def Tensors(self, tag):
+    """Given a summary tag, return all associated tensors.
+
+    Args:
+      tag: A string tag associated with the events.
+
+    Raises:
+      KeyError: If the tag is not found.
+
+    Returns:
+      An array of `TensorEvent`s.
+    """
+    return self._tensors.Items(tag)
+
   def _MaybePurgeOrphanedData(self, event):
     """Maybe purge orphaned data due to a TensorFlow crash.
 
@@ -667,6 +661,10 @@ class EventAccumulator(object):
     """Processes a simple value by adding it to accumulated state."""
     sv = ScalarEvent(wall_time=wall_time, step=step, value=scalar)
     self._scalars.AddItem(tag, sv)
+
+  def _ProcessTensor(self, tag, wall_time, step, tensor):
+    tv = TensorEvent(wall_time=wall_time, step=step, tensor_proto=tensor)
+    self._tensors.AddItem(tag, tv)
 
   def _ProcessHealthPill(self, wall_time, step, node_name, output_slot,
                          elements):
