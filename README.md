@@ -18,19 +18,10 @@ Now we only provide api that generate summary from `numpy.ndarray`. part of thes
   2. `cd mxconsole/tensorflow_fs`
   3. `./configure` to configure tensorflow_fs build, choose your python binary and default libs
   and choose only the jemalloc support.
-  4. `cd .. && ./dev_build.sh` 
-  5. Add this repo to your `PATHONPATH`.
+  4. `cd .. && ./update_native.sh` to build and update tensorflow_fs
+  4. `python setup.py setup.py bdist_wheel` to build python wheel
+  5. `pip install dist/MXConsole-0.0.1a1-py2.py3-none-any.whl`  install the python wheel
   6. You now can use the MXConsole like `python -m mxconsole --logdir path/of/your/logs`
-
-- develop build(build from source) **do this only when you have changed the frontend**
-  1. clone this repo `$ git clone https://github.com/bravomikekilo/mxconsole`
-  2. `$ cd mxconsole/tensorflow_fs`
-  3. `$ ./configure` to configure tensorflow_fs build, choose your python binary and default libs
-  and choose only the jemalloc support.
-  4. `$ cd .. && ./dev_build.sh` 
-  5. `$ sudo python setup.py install`
-  6. You now can use the MXConsole like 
-    `$ python -m mxconsole --logdir path/of/your/logs`
 
 - refresh the native library
   1. `$ ./update_native.sh`
