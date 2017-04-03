@@ -17,8 +17,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from mxconsole.framework import googletest
 from mxconsole.lib.python import json_util
+from mxconsole.platform import googletest
 
 _INFINITY = float('inf')
 

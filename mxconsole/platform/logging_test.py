@@ -17,8 +17,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-from mxconsole.framework import googletest
 from mxconsole.framework import tf_logging as logging
+from mxconsole.platform import googletest
 
 
 class EventLoaderTest(googletest.TestCase):

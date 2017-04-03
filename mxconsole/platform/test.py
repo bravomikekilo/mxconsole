@@ -31,17 +31,16 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
+import sys
 import unittest
-from mxconsole.framework import googletest as _googletest
+
+from mxconsole.platform import googletest as _googletest
 from mxconsole.util.all_util import remove_undocumented
 
-import sys
-
 if sys.version_info.major == 2:
-    import mock  # pylint: disable=g-import-not-at-top,unused-import
+    pass
 else:
-    from unittest import mock  # pylint: disable=g-import-not-at-top
+    pass
 
 # Import Benchmark class
 import random

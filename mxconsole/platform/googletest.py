@@ -23,14 +23,12 @@ import itertools
 import os
 import sys
 import tempfile
-
 # go/tf-wildcard-import
 # pylint: disable=wildcard-import
 from unittest import *
-# pylint: enable=wildcard-import
 
-from mxconsole.framework import app
-from mxconsole.framework import benchmark  # pylint: disable=unused-import
+# pylint: enable=wildcard-import
+from mxconsole.platform import app, benchmark
 
 Benchmark = benchmark.TensorFlowBenchmark  # pylint: disable=invalid-name
 
